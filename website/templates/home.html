@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='styles.css')}}"
+/>
+<!--for typewriting effect-->
+<br>
+<div style="text-align:center; margin-bottom: 100px;">
+<button type ="button"class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExample" role="button" onClick="typeWrite()"> CS50 final: description</button>
+</div>
+
+<div class="collapse" id="collapseExample">
+<div class="intro">
+  <h1 class="typing"></h1>
+</div>
+</div>
+<br>
+<br>
+<!--the end of tipewriting effect-->
+<h1 align="center" style="color:#363636;">Books read by {{current_user.first_name}} </h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for book in current_user.books %}
+     <td>{{book.id}}</td>
+     <td>{{book.name}}</td>
+     <td>{{book.author}}</td>
+     <td><img id="imageLink" src="{{book.imageLink}}" /></td>
+        <td><button type="button", class="close" onClick="deleteBook(book.id)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </tr>
+        {% else %}
+            <td></td>
+            <tr><td style="color:#363636;"><b>You have no books</b></td></tr>
+            <td></td>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

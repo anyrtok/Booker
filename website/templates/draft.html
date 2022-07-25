@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block title %}Quick notes and book drafts{%
+endblock %} {% block content %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='styles.css')}}"
+/>
+<br />
+<br />
+<h1 align="center" style="color: #363636">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    <strong><mark>{{note.about}} </mark></strong>
+    <button type="button" class="close" onClick="deleteNote(note.id)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <br />
+    <em>{{ note.data }}</em>
+  </li>
+  <br />
+  <br />
+  <br />
+  {% endfor %}
+</ul>
+<br />
+<br />
+<br />
+<form method="POST">
+  <div class="form-group">
+    <input
+      name="about"
+      class="form-control"
+      id="about"
+      placeholder="Name Of Your Note"
+    />
+  </div>
+  <textarea
+    name="note"
+    id="note"
+    class="form-control"
+    placeholder="Your Note"
+  ></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+{% endblock %}

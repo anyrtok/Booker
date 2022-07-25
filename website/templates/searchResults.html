@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block title %}Search Results{% endblock %} {%
+block content %}
+
+<h1 align="center" style="color: rgb(31, 31, 39)">Search Results</h1>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='styles.css')}}"
+/>
+
+<form action="{{url_for('views.search_results')}}" method="POST">
+  <div class="container">
+    <main class="grid">
+      {% for i in range(0, lenght) %}
+      <article>
+        {% if repo_dicts[i]['volumeInfo']['imageLinks'] %}
+        <img
+          id="imageLink"
+          src="{{ repo_dicts[i]['volumeInfo']['imageLinks']['smallThumbnail']}}"
+          alt="Photo"
+        />
+        {% else %}
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+          alt=""
+        />
+        {% endif %}
+        <div class="text">
+          <h3 id="title" name="title">
+            {{repo_dicts[i]['volumeInfo']['title']}}
+          </h3>
+          <p id="authors">
+            {% if repo_dicts[i]['volumeInfo']['authors']%}
+            {{repo_dicts[i]['volumeInfo']['authors'][0]}} {%endif%}
+          </p>
+          <button
+            type="submit"
+            name="google"
+            value="{{ repo_dicts[i]['id']}} {{repo_dicts[i]['volumeInfo']['title']}} "
+          >
+            Add to My Books {{value}}
+          </button>
+        </div>
+      </article>
+      {% endfor%}
+    </main>
+  </div>
+</form>
+
+{% endblock %}

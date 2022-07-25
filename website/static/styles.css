@@ -1,0 +1,131 @@
+/* for the bootstrap modification*/
+.bg-dark {
+  background-color: #757575 !important;
+}
+
+nav .nav-link:hover {
+  color: #f5f5f5;
+}
+.btn-outline-primary {
+  color: #b5b5b5;
+  border-color: #b5b5b5;
+}
+.btn-outline-primary:hover {
+  color: #f5f5f5;
+  background-color: #757575;
+  border-color: #816b75;
+}
+
+.btn-primary {
+  color: #363636;
+  background-color: #dbdbdb;
+  border-color: #dbdbdb;
+}
+
+.btn-primary:hover {
+  color: #363636;
+  background-color: #757575;
+  border-color: #757575;
+}
+/* for book display */
+body {
+  background: #f5f5f5;
+}
+
+.grid {
+  margin: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  align-items: center;
+}
+
+.grid > article {
+  background: #dbdbdb;
+  border: non;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s;
+}
+
+.grid > article:hover {
+  transform: translateY(5px);
+  box-shadow: 2px 2px 26px 0px rgba(0, 0, 0, 0.3);
+}
+
+.grid > article img {
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.text {
+  padding: 0 20px 20px;
+}
+
+.text h3 {
+  text-transform: uppercase;
+}
+
+.text button {
+  background: #b5b5b5;
+  border-radius: 20px;
+  border: none;
+  color: #363636;
+  padding: 10px;
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .grid > article {
+    text-align: center;
+  }
+}
+
+/* for the description*/
+.home50 {
+  background-color: #dde5b6;
+}
+.intro {
+  font-family: sans-serif;
+  display: flex;
+  text-align: center;
+  color: #755252;
+}
+
+.typing {
+  margin-left: 10px;
+}
+
+.typing::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  width: 1px;
+  height: 5%;
+  border-right: 2px;
+  animation: blink 0.5s infinite ease;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
